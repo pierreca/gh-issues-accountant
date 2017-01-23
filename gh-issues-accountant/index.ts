@@ -48,7 +48,9 @@ export function index(context: any, myTimer: any) {
 
     return Promise.all(promises);
   }).then(report => {
-    context.bindings.issueReport = report;
+    var reportAsString = JSON.stringify(report);
+    context.log(reportAsString);
+    context.bindings.issueReport = reportAsString;
     context.done();
   });;
 }

@@ -33,7 +33,9 @@ function index(context, myTimer) {
         });
         return Promise.all(promises);
     }).then(function (report) {
-        context.bindings.issueReport = report;
+        var reportAsString = JSON.stringify(report);
+        context.log(reportAsString);
+        context.bindings.issueReport = reportAsString;
         context.done();
     });
     ;
