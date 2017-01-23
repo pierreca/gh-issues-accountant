@@ -19,7 +19,8 @@ function index(context, myTimer) {
     ];
     var repo = new gh_issues_api_1.GHRepository(repoOwner, repoName);
     var report = {
-        name: repoName
+        name: repoName,
+        at: new Date().toISOString()
     };
     context.log('Getting issues for ' + repoOwner + '/' + repoName, timeStamp);
     repo.loadAllIssues().then(function () {

@@ -32,7 +32,8 @@ export function index(context: any, myTimer: any) {
 
   const repo = new GHRepository(repoOwner, repoName);
   var report = {
-    name: repoName
+    name: repoName,
+    at: new Date().toISOString()
   };
 
   context.log('Getting issues for ' + repoOwner + '/' + repoName, timeStamp);   
