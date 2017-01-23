@@ -9,10 +9,10 @@
     },{
       "name": "issueReport",
       "type": "documentDB",
-      "databaseName": "<Name of the DocumentDB database>",
-      "collectionName": "<Name of the DocumentDB collection>",
+      "databaseName": "gh-issues",
+      "collectionName": "open-issues-count-by-label",
       "createIfNotExists": true,
-      "connection": "<Value of AccountEndpoint in Application Setting - see below>",
+      "connection": "gh-issues-accountant-db_DOCUMENTDB",
       "direction": "out"
     }
   ]
