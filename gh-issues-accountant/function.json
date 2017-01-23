@@ -1,0 +1,19 @@
+{
+  "disabled": true,
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 5 * * * *"
+    },{
+      "name": "issueReport",
+      "type": "documentDB",
+      "databaseName": "<Name of the DocumentDB database>",
+      "collectionName": "<Name of the DocumentDB collection>",
+      "createIfNotExists": true,
+      "connection": "<Value of AccountEndpoint in Application Setting - see below>",
+      "direction": "out"
+    }
+  ]
+}

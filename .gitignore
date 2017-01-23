@@ -35,3 +35,10 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Typescript map files
+*.js.map
+typings
+
+# Visual Studio Code configuration
+.vscode
