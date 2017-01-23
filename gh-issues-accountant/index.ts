@@ -18,8 +18,8 @@ export function index(context: any, myTimer: any) {
       context.log('Function trigger timer is past due!');
   }
 
-  const repoName = 'azure-iot-sdk-node';
-  const repoOwner = 'azure';
+  const repoName = process.env['repoName'];
+  const repoOwner = process.env['repoOwner'];
   const labels = [
     'bug',
     'build issue',

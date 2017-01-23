@@ -6,8 +6,8 @@ function index(context, myTimer) {
     if (myTimer.isPastDue) {
         context.log('Function trigger timer is past due!');
     }
-    var repoName = 'azure-iot-sdk-node';
-    var repoOwner = 'azure';
+    var repoName = process.env['repoName'];
+    var repoOwner = process.env['repoOwner'];
     var labels = [
         'bug',
         'build issue',
