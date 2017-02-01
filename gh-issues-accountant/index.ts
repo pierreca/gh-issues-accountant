@@ -5,7 +5,9 @@ import {
   GHRepository,
   IssueType,
   IssueState,
+  IssueActivity,
   IssueFilter,
+  IssueActivityFilter,
   IssueLabel,
   IssueLabelFilter,
   FilterCollection
@@ -41,11 +43,18 @@ export function index(context: any, myTimer: any) {
     var promises = labels.map(label => {
       var filterCollection = new FilterCollection();
       filterCollection.label = new IssueLabelFilter(label);
-      return Promise.all([
-        repo.list(IssueType.All, IssueState.Open, filterCollection).then(issues => report[label] = issues.length),
-        repo.list(IssueType.All, IssueState.Open).then(issues => report['total'] = issues.length)
-      ]);
+      return repo.list(IssueType.All, IssueState.Open, filterCollection).then(issues => report[label] = issues.length);
     });
+    var last7days = new Date(Date.now() - 604800000)
+    var staleIssuesFilter = new IssueActivityFilter(IssueActivity.Updated, last7days);
+    staleIssuesFilter.negated = true;
+    var staleFilters = new FilterCollection();
+    staleFilters.activity = staleIssuesFilter;
+    promises.push([
+      repo.list(IssueType.Issue, IssueState.Open).then(issues => report['total'] = issues.length),
+      repo.list(IssueType.PulLRequest, IssueState.Open).then(issues => report['pull_request'] = issues.length),
+      repo.list(IssueType.All, IssueState.Open, staleFilters).then(issues => report['stale_7days'] = issues.length)
+    ]);
 
     return Promise.all(promises);
   }).then(() => {

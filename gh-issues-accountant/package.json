@@ -1,6 +1,6 @@
 {
   "name": "gh-issues-accountant",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Azure function that connects to a github repository and uploads open issues count (per label) to DocumentDB",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,6 @@
   "homepage": "https://github.com/pierreca/gh-issues-accountant#readme",
   "dependencies": {
     "bluebird": "^3.4.7",
-    "gh-issues-api": "0.0.1"
+    "gh-issues-api": "0.0.2"
   }
 }
